@@ -1,15 +1,19 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import os
 from openai import OpenAI
 
-# Initialize OpenAI client (NEW API)
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# ---------- OpenAI Client ----------
+api_key = os.getenv("OPENAI_API_KEY")
+if not api_key:
+    raise RuntimeError("OPENAI_API_KEY is not set")
+
+client = OpenAI(api_key=api_key)
 
 app = FastAPI(title="Prompt Generator AI")
 
-# CORS (required for frontend + Firebase)
+# ---------- CORS ----------
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -18,31 +22,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# -------- Request Model --------
+# ---------- Request Model ----------
 class PromptRequest(BaseModel):
     user_prompt: str
-    prompt_type: str = "image"   # image | video | text
-    quality: str = "medium"      # short | medium | ultra
+    prompt_type: str = "image"
+    quality: str = "medium"
 
-# -------- System Prompts --------
+# ---------- System Prompts ----------
 SYSTEM_PROMPTS = {
-    "image": "You are an expert AI image prompt engineer. Generate a cinematic, professional, high-quality image prompt.",
-    "video": "You are an expert AI video prompt engineer. Generate a cinematic, detailed video generation prompt.",
-    "text": "You are an expert writing prompt engineer. Generate a clear, professional, high-quality writing prompt."
+    "image": "You are an expert AI image prompt engineer.",
+    "video": "You are an expert AI video prompt engineer.",
+    "text": "You are an expert writing prompt engineer.",
+    "code": "You are a senior software engineer generating production-grade coding prompts.",
+    "chat": "You are an expert conversational AI prompt designer."
 }
 
 QUALITY_HINTS = {
-    "short": "Keep the prompt concise and professional.",
-    "medium": "Provide balanced detail and quality.",
-    "ultra": "Make the prompt extremely detailed, cinematic, and premium quality."
+    "short": "Keep the prompt concise and clear.",
+    "medium": "Provide balanced detail and clarity.",
+    "detailed": "Create a well-structured, advanced, and descriptive prompt.",
+    "ultra": "Create an expert-level, extremely detailed, cinematic prompt."
 }
 
-# -------- Health Check --------
+# ---------- Health Check ----------
 @app.get("/")
 def root():
     return {"status": "Backend running successfully"}
 
-# -------- Prompt Generator --------
+# ---------- Prompt Generator ----------
 @app.post("/generate")
 def generate_prompt(data: PromptRequest):
     system_prompt = (
@@ -51,15 +58,20 @@ def generate_prompt(data: PromptRequest):
         + QUALITY_HINTS.get(data.quality, QUALITY_HINTS["medium"])
     )
 
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": data.user_prompt}
-        ],
-        temperature=0.8,
-    )
+    try:
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",  # SAFE MODEL (works on all accounts)
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": data.user_prompt}
+            ],
+            temperature=0.8,
+        )
 
-    return {
-        "professional_prompt": response.choices[0].message.content.strip()
-    }
+        return {
+            "professional_prompt": response.choices[0].message.content.strip()
+        }
+
+    except Exception as e:
+        # Prevent 500 crash, return readable error
+        raise HTTPException(status_code=500, detail=str(e))
