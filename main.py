@@ -4,25 +4,22 @@ from pydantic import BaseModel
 import os
 import google.generativeai as genai
 
-# ======================================================
-# ENV CHECK
-# ======================================================
+# =====================================================
+# CONFIG
+# =====================================================
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-if not GEMINI_API_KEY:
-    raise RuntimeError("❌ GEMINI_API_KEY not set")
 
-# ======================================================
-# GEMINI CONFIG (IMPORTANT FIX)
-# ======================================================
+if not GEMINI_API_KEY:
+    raise RuntimeError("❌ GEMINI_API_KEY is missing")
+
 genai.configure(api_key=GEMINI_API_KEY)
 
-model = genai.GenerativeModel(
-    model_name="gemini-pro"   # ✅ WORKING MODEL
-)
+# ✅ CORRECT MODEL NAME
+model = genai.GenerativeModel("models/gemini-1.0-pro")
 
-# ======================================================
-# FASTAPI APP
-# ======================================================
+# =====================================================
+# APP
+# =====================================================
 app = FastAPI(title="PromptFlow AI – Gemini Backend")
 
 app.add_middleware(
@@ -32,17 +29,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ======================================================
+# =====================================================
 # REQUEST MODEL
-# ======================================================
+# =====================================================
 class PromptRequest(BaseModel):
     user_prompt: str
     prompt_type: str = "image"
     quality: str = "medium"
 
-# ======================================================
+# =====================================================
 # PROMPT LOGIC
-# ======================================================
+# =====================================================
 SYSTEM_PROMPTS = {
     "image": "You are a professional AI image prompt engineer.",
     "video": "You are a professional AI video prompt engineer.",
@@ -52,49 +49,50 @@ SYSTEM_PROMPTS = {
 }
 
 QUALITY_HINTS = {
-    "short": "Keep it concise and efficient.",
+    "short": "Keep it concise and clean.",
     "medium": "Balanced professional detail.",
     "detailed": "Highly detailed and structured.",
     "ultra": "Extremely detailed, expert-level, production-ready."
 }
 
-# ======================================================
+# =====================================================
 # ROUTES
-# ======================================================
+# =====================================================
 @app.get("/")
-def root():
+def health():
     return {"status": "✅ Gemini backend running"}
 
 @app.post("/generate")
 def generate_prompt(data: PromptRequest):
     try:
-        system_role = SYSTEM_PROMPTS.get(data.prompt_type, SYSTEM_PROMPTS["image"])
-        quality_hint = QUALITY_HINTS.get(data.quality, QUALITY_HINTS["medium"])
+        role = SYSTEM_PROMPTS.get(data.prompt_type, SYSTEM_PROMPTS["image"])
+        quality = QUALITY_HINTS.get(data.quality, QUALITY_HINTS["medium"])
 
         prompt = f"""
 ROLE:
-{system_role}
+{role}
 
 QUALITY:
-{quality_hint}
+{quality}
 
 USER IDEA:
 {data.user_prompt}
 
-INSTRUCTIONS:
-Generate a professional, optimized AI prompt.
-No explanation. Only final prompt.
+RULES:
+- Output only the final optimized prompt
+- No explanations
+- Professional structure
 """
 
         response = model.generate_content(prompt)
 
         if not response.text:
-            raise ValueError("Empty response")
+            raise ValueError("Empty response from Gemini")
 
         return {
             "professional_prompt": response.text.strip()
         }
 
     except Exception as e:
-        print("❌ Gemini Error:", e)
+        print("❌ Gemini error:", e)
         raise HTTPException(status_code=500, detail=str(e))
