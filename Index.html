@@ -1,0 +1,260 @@
+<!-- editor.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotionCraft Pro - Editor</title>
+    <link rel="stylesheet" href="css/editor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button class="nav-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="logo">MotionCraft <span class="pro-badge">PRO</span></h1>
+            <div class="project-info">
+                <input type="text" id="project-name" value="Untitled Project">
+                <span class="auto-save-status" id="save-status">Saved</span>
+            </div>
+        </div>
+        
+        <div class="nav-center">
+            <button class="nav-btn" id="play-btn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button class="nav-btn" id="stop-btn">
+                <i class="fas fa-stop"></i>
+            </button>
+            <div class="timeline-controls">
+                <span id="current-time">0:00</span>
+                <input type="range" id="timeline-scrubber" min="0" max="100" value="0">
+                <span id="duration">0:10</span>
+            </div>
+        </div>
+        
+        <div class="nav-right">
+            <button class="nav-btn" id="export-btn">
+                <i class="fas fa-share-square"></i> Export
+            </button>
+            <button class="nav-btn" id="user-menu">
+                <i class="fas fa-user-circle"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Main Workspace -->
+    <div class="workspace">
+        <!-- Left Panel - Tools & Layers -->
+        <div class="left-panel">
+            <div class="toolbar">
+                <button class="tool-btn active" data-tool="select">
+                    <i class="fas fa-mouse-pointer"></i>
+                </button>
+                <button class="tool-btn" data-tool="text">
+                    <i class="fas fa-font"></i>
+                </button>
+                <button class="tool-btn" data-tool="shape">
+                    <i class="fas fa-square"></i>
+                </button>
+                <button class="tool-btn" data-tool="pen">
+                    <i class="fas fa-draw-polygon"></i>
+                </button>
+                <button class="tool-btn" data-tool="mask">
+                    <i class="fas fa-crop"></i>
+                </button>
+            </div>
+            
+            <div class="layers-panel">
+                <h3>Layers <button id="add-layer-btn"><i class="fas fa-plus"></i></button></h3>
+                <div class="layers-list" id="layers-list">
+                    <!-- Layers will be dynamically added here -->
+                </div>
+            </div>
+            
+            <div class="assets-panel">
+                <h3>Assets</h3>
+                <button class="btn-secondary" id="import-asset-btn">
+                    <i class="fas fa-upload"></i> Import Media
+                </button>
+                <div class="assets-grid" id="assets-grid">
+                    <!-- Assets will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Center Panel - Preview Canvas -->
+        <div class="center-panel">
+            <div class="preview-container">
+                <canvas id="preview-canvas"></canvas>
+                <div class="canvas-overlay" id="canvas-overlay"></div>
+                <div class="preview-controls">
+                    <button class="btn-small" id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                    <span id="zoom-level">100%</span>
+                    <button class="btn-small" id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                    <select id="preview-quality">
+                        <option value="full">Full Quality</option>
+                        <option value="half" selected>Half Quality</option>
+                        <option value="quarter">Quarter Quality</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Keyframe Timeline -->
+            <div class="timeline-panel">
+                <div class="timeline-header">
+                    <div class="timeline-tools">
+                        <button class="btn-small" id="zoom-timeline-in">
+                            <i class="fas fa-search-plus"></i>
+                        </button>
+                        <button class="btn-small" id="zoom-timeline-out">
+                            <i class="fas fa-search-minus"></i>
+                        </button>
+                        <button class="btn-small" id="add-marker-btn">
+                            <i class="fas fa-flag"></i> Marker
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="timeline-container">
+                    <div class="timeline-ruler" id="timeline-ruler"></div>
+                    <div class="timeline-tracks" id="timeline-tracks">
+                        <!-- Timeline tracks will be dynamically added here -->
+                    </div>
+                </div>
+                
+                <div class="timeline-footer">
+                    <div class="fps-selector">
+                        <label>FPS:</label>
+                        <select id="fps-select">
+                            <option value="24">24</option>
+                            <option value="30" selected>30</option>
+                            <option value="60">60</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Panel - Properties & Effects -->
+        <div class="right-panel">
+            <div class="properties-tabs">
+                <button class="tab-btn active" data-tab="properties">Properties</button>
+                <button class="tab-btn" data-tab="effects">Effects</button>
+                <button class="tab-btn" data-tab="export">Export</button>
+            </div>
+            
+            <div class="properties-content" id="properties-tab">
+                <div class="property-group">
+                    <h4>Transform</h4>
+                    <div class="property-row">
+                        <label>Position X</label>
+                        <input type="number" id="pos-x" step="1">
+                    </div>
+                    <div class="property-row">
+                        <label>Position Y</label>
+                        <input type="number" id="pos-y" step="1">
+                    </div>
+                    <div class="property-row">
+                        <label>Scale</label>
+                        <input type="range" id="scale" min="0" max="500" value="100">
+                        <span id="scale-value">100%</span>
+                    </div>
+                    <div class="property-row">
+                        <label>Rotation</label>
+                        <input type="range" id="rotation" min="0" max="360" value="0">
+                        <span id="rotation-value">0°</span>
+                    </div>
+                    <div class="property-row">
+                        <label>Opacity</label>
+                        <input type="range" id="opacity" min="0" max="100" value="100">
+                        <span id="opacity-value">100%</span>
+                    </div>
+                </div>
+                
+                <div class="property-group">
+                    <h4>Keyframes</h4>
+                    <div class="keyframe-controls">
+                        <button class="btn-small" id="add-keyframe-btn">
+                            <i class="fas fa-key"></i> Add Keyframe
+                        </button>
+                        <button class="btn-small" id="clear-keyframes-btn">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                    <div class="keyframe-list" id="keyframe-list">
+                        <!-- Keyframes will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="properties-content hidden" id="effects-tab">
+                <div class="effects-library">
+                    <h4>Effects Library</h4>
+                    <div class="effect-category">
+                        <h5>Color Grading</h5>
+                        <div class="effects-grid">
+                            <div class="effect-item" data-effect="lut-warm">
+                                <div class="effect-preview"></div>
+                                <span>Warm LUT</span>
+                            </div>
+                            <div class="effect-item" data-effect="lut-cool">
+                                <div class="effect-preview"></div>
+                                <span>Cool LUT</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- More effects categories -->
+                </div>
+            </div>
+            
+            <div class="properties-content hidden" id="export-tab">
+                <div class="export-settings">
+                    <h4>Export Settings</h4>
+                    <div class="property-row">
+                        <label>Resolution</label>
+                        <select id="export-resolution">
+                            <option value="720p">720p (HD)</option>
+                            <option value="1080p" selected>1080p (Full HD)</option>
+                            <option value="4k">4K (Pro only)</option>
+                        </select>
+                    </div>
+                    <div class="property-row">
+                        <label>Format</label>
+                        <select id="export-format">
+                            <option value="mp4">MP4</option>
+                            <option value="mov">MOV</option>
+                            <option value="gif">GIF</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" id="start-export-btn">
+                        <i class="fas fa-download"></i> Export Video
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <div class="modal" id="new-project-modal">
+        <div class="modal-content">
+            <h2>Create New Project</h2>
+            <!-- New project form -->
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/editor-data.js"></script>
+    <script src="js/editor-ui.js"></script>
+    <script src="js/render-engine.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
