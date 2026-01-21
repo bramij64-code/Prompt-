@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MotionCraft Pro - Professional Motion Design in Your Pocket</title>
+    <meta name="description" content="Create professional motion graphics and animations directly from your smartphone. Layer-based timeline, keyframe animation, vector graphics, and real-time previews.">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">MotionCraft</span>
+                    <span class="logo-pro">PRO</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#templates" class="nav-link">Templates</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="auth.html" class="nav-link nav-login">Log In</a>
+                <a href="auth.html?action=signup" class="btn btn-primary btn-small">Get Started Free</a>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">MotionCraft</span>
+                    <span class="logo-pro">PRO</span>
+                </div>
+            </div>
+            <button class="mobile-close-btn" id="mobileCloseBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#features" class="mobile-nav-link">Features</a>
+            <a href="#how-it-works" class="mobile-nav-link">How It Works</a>
+            <a href="#templates" class="mobile-nav-link">Templates</a>
+            <a href="#pricing" class="mobile-nav-link">Pricing</a>
+            <a href="auth.html" class="mobile-nav-link">Log In</a>
+            <a href="auth.html?action=signup" class="btn btn-primary btn-full">Get Started Free</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Professional Motion Design</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Animation, 
+                    <span class="gradient-text">Unplugged</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Create professional motion graphics and animations directly from your smartphone. 
+                    No desktop required, no complexity barrier.
+                </p>
+                
+                <div class="hero-cta">
+                    <a href="auth.html?action=signup" class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Start Creating Free
+                    </a>
+                    <a href="#demo" class="btn btn-secondary btn-large">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo
+                    </a>
+                </div>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Active Creators</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Projects Created</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label">App Store Rating</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-preview">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-screen">
+                            <!-- Animated preview of the editor -->
+                            <div class="screen-content">
+                                <div class="timeline-preview">
+                                    <div class="timeline-track"></div>
+                                    <div class="timeline-track"></div>
+                                    <div class="timeline-track"></div>
+                                    <div class="playhead"></div>
+                                </div>
+                                <div class="canvas-preview">
+                                    <div class="animated-element element-1">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="animated-element element-2">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div class="animated-element element-3">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Desktop Power, <span class="gradient-text">Mobile Intuition</span></h2>
+                <p class="section-subtitle">Everything you need for professional motion design, optimized for touch.</p>
+            </div>
+            
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="feature-title">Layer-Based Timeline</h3>
+                    <p class="feature-description">
+                        Organize video, images, text, shapes, and audio in a professional layer system. 
+                        Drag, drop, and arrange with intuitive touch controls.
+                    </p>
+                    <div class="feature-badge">Pro Feature</div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="feature-title">Keyframe Animation</h3>
+                    <p class="feature-description">
+                        Animate position, scale, rotation, and opacity with precision. 
+                        Visual bezier curves and easing controls for smooth, professional motion.
+                    </p>
+                    <div class="feature-badge">Pro Feature</div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-draw-polygon"></i>
+                    </div>
+                    <h3 class="feature-title">Vector Graphics</h3>
+                    <p class="feature-description">
+                        Create and edit vector shapes directly on your device. 
+                        Scalable graphics that stay sharp at any resolution.
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mask"></i>
+                    </div>
+                    <h3 class="feature-title">Masking & Rotoscoping</h3>
+                    <p class="feature-description">
+                        Isolate objects, create complex reveals, and apply effects to specific areas 
+                        with powerful masking tools.
+                    </p>
+                    <div class="feature-badge">Pro Feature</div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">Real-Time Preview</h3>
+                    <p class="feature-description">
+                        See your changes instantly with GPU-accelerated rendering. 
+                        No waiting for exports to preview your work.
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">AI Motion Assistant</h3>
+                    <p class="feature-description">
+                        Our unique AI helps you create professional animations. 
+                        Motion tracking, animation transfer, and smart suggestions.
+                    </p>
+                    <div class="feature-badge highlight">NEW</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Create Like a Pro in <span class="gradient-text">3 Simple Steps</span></h2>
+                <p class="section-subtitle">No steep learning curve. Start creating professional animations immediately.</p>
+            </div>
+            
+            <div class="steps-container">
+                <!-- Step 1 -->
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Start with a Template or Blank Project</h3>
+                        <p class="step-description">
+                            Choose from hundreds of professionally designed templates or start from scratch. 
+                            Our Smart Templates are fully customizable while maintaining perfect timing.
+                        </p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Drag & drop your media</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Auto-animate elements</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Adjust timing with sliders</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-frame">
+                            <div class="template-preview">
+                                <div class="template-card">
+                                    <div class="template-thumb"></div>
+                                    <div class="template-info">
+                                        <div class="template-badge">Popular</div>
+                                    </div>
+                                </div>
+                                <div class="template-card">
+                                    <div class="template-thumb"></div>
+                                    <div class="template-info">
+                                        <div class="template-badge">New</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="step step-reverse">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Animate with Simple Gestures</h3>
+                        <p class="step-description">
+                            Swipe to set position keyframes, pinch to adjust scale, twist to rotate. 
+                            Our gesture-based interface makes animation intuitive and fun.
+                        </p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <i class="fas fa-hand-pointer"></i>
+                                <span>Swipe for movement</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fas fa-expand-alt"></i>
+                                <span>Pinch for scale</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Twist for rotation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-frame">
+                            <div class="gesture-demo">
+                                <div class="gesture-icon">
+                                    <i class="fas fa-hand-pointer"></i>
+                                </div>
+                                <div class="gesture-text">Swipe to animate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Export & Share Instantly</h3>
+                        <p class="feature-description">
+                            Render in 4K, share directly to social media, or save to your device. 
+                            Optimized presets for every platform.
+                        </p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram preset</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fab fa-tiktok"></i>
+                                <span>TikTok preset</span>
+                            </div>
+                            <div class="step-feature">
+                                <i class="fab fa-youtube"></i>
+                                <span>YouTube preset</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-frame">
+                            <div class="export-preview">
+                                <div class="platform-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="export-info">
+                                    <div class="export-format">1080x1080 • MP4</div>
+                                    <div class="export-status">Ready to share</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Smart Templates for <span class="gradient-text">Every Purpose</span></h2>
+                <p class="section-subtitle">Fully customizable templates created by professional motion designers.</p>
+            </div>
+            
+            <div class="templates-carousel" id="templatesCarousel">
+                <!-- Template 1 -->
+                <div class="template-card-large">
+                    <div class="template-thumb-large" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                        <div class="template-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="template-info-large">
+                        <div class="template-category">Social Media</div>
+                        <h3 class="template-title">Instagram Story Promo</h3>
+                        <p class="template-description">
+                            Eye-catching animation pack for product promotions and announcements.
+                        </p>
+                        <div class="template-stats">
+                            <div class="template-stat">
+                                <i class="fas fa-download"></i>
+                                <span>1.2K uses</span>
+                            </div>
+                            <div class="template-stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 rating</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small">Preview</a>
+                    </div>
+                </div>
+                
+                <!-- Template 2 -->
+                <div class="template-card-large">
+                    <div class="template-thumb-large" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                        <div class="template-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="template-info-large">
+                        <div class="template-category">Explainer Video</div>
+                        <h3 class="template-title">Product Introduction</h3>
+                        <p class="template-description">
+                            Clean, professional animation for product showcases and explainer videos.
+                        </p>
+                        <div class="template-stats">
+                            <div class="template-stat">
+                                <i class="fas fa-download"></i>
+                                <span>850 uses</span>
+                            </div>
+                            <div class="template-stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.8 rating</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small">Preview</a>
+                    </div>
+                </div>
+                
+                <!-- Template 3 -->
+                <div class="template-card-large">
+                    <div class="template-thumb-large" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                        <div class="template-overlay">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                    </div>
+                    <div class="template-info-large">
+                        <div class="template-category">Lower Thirds</div>
+                        <h3 class="template-title">Broadcast Titles</h3>
+                        <p class="template-description">
+                            Professional lower thirds and title animations for videos and streams.
+                        </p>
+                        <div class="template-stats">
+                            <div class="template-stat">
+                                <i class="fas fa-download"></i>
+                                <span>2.1K uses</span>
+                            </div>
+                            <div class="template-stat">
+                                <i class="fas fa-star"></i>
+                                <span>4.9 rating</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-outline btn-small">Preview</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="templates-cta">
+                <a href="auth.html?action=signup" class="btn btn-primary btn-large">
+                    <i class="fas fa-gem"></i>
+                    Browse All Templates
+                </a>
+                <p class="templates-note">Free users get access to 50+ templates</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Simple, <span class="gradient-text">Transparent Pricing</span></h2>
+                <p class="section-subtitle">Start free, upgrade when you need more power.</p>
+            </div>
+            
+            <div class="pricing-switch">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Yearly <span class="discount-badge">Save 30%</span></span>
+            </div>
+            
+            <div class="pricing-cards">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Free</h3>
+                        <div class="plan-price">
+                            <span class="price-amount">$0</span>
+                            <span class="price-period">forever</span>
+                        </div>
+                        <p class="plan-description">Perfect for getting started</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>All core editing tools</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>720p watermark-free exports</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>50+ templates</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Basic effects library</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Community sharing</span>
+                        </div>
+                        <div class="plan-feature disabled">
+                            <i class="fas fa-times"></i>
+                            <span>4K exports</span>
+                        </div>
+                        <div class="plan-feature disabled">
+                            <i class="fas fa-times"></i>
+                            <span>AI Motion Assistant</span>
+                        </div>
+                        <div class="plan-feature disabled">
+                            <i class="fas fa-times"></i>
+                            <span>Premium assets</span>
+                        </div>
+                    </div>
+                    
+                    <a href="auth.html?action=signup" class="btn btn-outline btn-full">Get Started Free</a>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Pro</h3>
+                        <div class="plan-price">
+                            <span class="price-amount">$7.99</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="plan-description">For serious creators</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Everything in Free</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>4K exports</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>AI Motion Assistant</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Premium templates library</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Advanced effects & LUTs</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Cloud project sync</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Commercial license</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Priority support</span>
+                        </div>
+                    </div>
+                    
+                    <a href="auth.html?action=signup&plan=pro" class="btn btn-primary btn-full">Start Pro Trial</a>
+                    <p class="trial-note">14-day free trial, then $7.99/month</p>
+                </div>
+                
+                <!-- Team Plan -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="plan-name">Team</h3>
+                        <div class="plan-price">
+                            <span class="price-amount">$19.99</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="plan-description">For studios & agencies</p>
+                    </div>
+                    
+                    <div class="plan-features">
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Everything in Pro</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>3 team member seats</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Collaborative projects</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Shared asset library</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Centralized billing</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Team analytics</span>
+                        </div>
+                        <div class="plan-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Dedicated support</span>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="btn btn-outline btn-full">Contact Sales</a>
+                </div>
+            </div>
+            
+            <div class="pricing-faq">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Can I cancel anytime?</h4>
+                        <p>Yes, you can cancel your subscription at any time. You'll keep access until the end of your billing period.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Is there a free trial?</h4>
+                        <p>Yes! The Pro plan comes with a 14-day free trial. No credit card required to start with the Free plan.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>Can I use it on multiple devices?</h4>
+                        <p>Yes, with the Pro and Team plans, you can sync your projects across multiple devices.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>What platforms do you support?</h4>
+                        <p>MotionCraft Pro works on any modern web browser. Mobile apps coming soon to iOS and Android.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-container">
+            <div class="cta-content">
+                <h2 class="cta-title">Start Creating Professional Animations Today</h2>
+                <p class="cta-subtitle">
+                    Join 10,000+ creators who are already making amazing motion graphics with MotionCraft Pro.
+                </p>
+                <div class="cta-buttons">
+                    <a href="auth.html?action=signup" class="btn btn-primary btn-large">
+                        <i class="fas fa-rocket"></i>
+                        Start Free Account
+                    </a>
+                    <a href="#demo" class="btn btn-secondary btn-large">
+                        <i class="fas fa-play-circle"></i>
+                        Watch Demo Video
+                    </a>
+                </div>
+                <div class="cta-note">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>No credit card required • 14-day Pro trial</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">MotionCraft</span>
+                            <span class="logo-pro">PRO</span>
+                        </div>
+                    </div>
+                    <p class="footer-tagline">Your pocket-sized motion studio</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#">Updates</a>
+                        <a href="#">Roadmap</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Tutorials</a>
+                        <a href="#">Documentation</a>
+                        <a href="#">Community</a>
+                        <a href="#">Blog</a>
+                        <a href="#">Support</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="mailto:hello@motioncraft.com">hello@motioncraft.com</a>
+                        <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                        <div class="app-stores">
+                            <a href="#" class="app-store-link">
+                                <i class="fab fa-apple"></i>
+                                <span>App Store</span>
+                            </a>
+                            <a href="#" class="app-store-link">
+                                <i class="fab fa-google-play"></i>
+                                <span>Google Play</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2024 MotionCraft Pro. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Video Modal -->
+    <div class="modal" id="demoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>MotionCraft Pro Demo</h3>
+                <button class="modal-close" id="demoModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Demo video will play here</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/index.js"></script>
+    <script>
+        // Simple JavaScript for landing page interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileCloseBtn = document.getElementById('mobileCloseBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+            });
+            
+            mobileCloseBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if(this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Pricing toggle
+            const pricingToggle = document.getElementById('pricingToggle');
+            const priceAmounts = document.querySelectorAll('.price-amount');
+            
+            pricingToggle.addEventListener('change', function() {
+                if(this.checked) {
+                    // Yearly pricing
+                    priceAmounts[1].textContent = '$4.99';
+                    priceAmounts[2].textContent = '$13.99';
+                } else {
+                    // Monthly pricing
+                    priceAmounts[1].textContent = '$7.99';
+                    priceAmounts[2].textContent = '$19.99';
+                }
+            });
+            
+            // Template carousel (simple version)
+            const templatesCarousel = document.getElementById('templatesCarousel');
+            if(templatesCarousel) {
+                let scrollPosition = 0;
+                const cardWidth = 320;
+                const gap = 20;
+                
+                // Simple auto-scroll for demo purposes
+                setInterval(() => {
+                    scrollPosition += cardWidth + gap;
+                    if(scrollPosition > (cardWidth + gap) * 2) {
+                        scrollPosition = 0;
+                    }
+                    templatesCarousel.scrollTo({
+                        left: scrollPosition,
+                        behavior: 'smooth'
+                    });
+                }, 3000);
+            }
+            
+            // Demo modal
+            const demoButtons = document.querySelectorAll('a[href="#demo"]');
+            const demoModal = document.getElementById('demoModal');
+            const demoModalClose = document.getElementById('demoModalClose');
+            
+            demoButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    demoModal.classList.add('active');
+                });
+            });
+            
+            demoModalClose.addEventListener('click', () => {
+                demoModal.classList.remove('active');
+            });
+            
+            // Close modal when clicking outside
+            demoModal.addEventListener('click', (e) => {
+                if(e.target === demoModal) {
+                    demoModal.classList.remove('active');
+                }
+            });
+            
+            // Animate elements on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe feature cards and steps
+            document.querySelectorAll('.feature-card, .step').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
